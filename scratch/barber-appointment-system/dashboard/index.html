@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berber Randevu Sistemi | Admin Panel</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-scissors"></i>
+                <h2>CutSync</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-chart-pie"></i> İzleme Paneli</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-calendar-plus"></i> Hızlı Randevu</a>
+                <a href="#" class="nav-item"><i class="fa-brands fa-google"></i> Takvimler</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Sistem Ayarları</a>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff" alt="Admin">
+                <div class="user-info">
+                    <span class="user-name">Sistem Yöneticisi</span>
+                    <span class="user-role">Admin</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Berber veya Randevu Ara...">
+                </div>
+                <div class="actions">
+                    <button class="icon-btn" onclick="refreshStatus()" title="Sistemi Yenile"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button class="btn-primary" onclick="openBarberModal()"><i class="fa-solid fa-plus"></i> Yeni Berber</button>
+                    <button class="btn-primary btn-outline" onclick="alert('Loglar açılıyor...')"><i class="fa-solid fa-list-ul"></i> İşlem Logları</button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Status Table (Monitoring) -->
+                <section class="card col-span-2">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-satellite-dish"></i> Sistem İzleme Paneli (Son 5 Dk)</h3>
+                        <button class="btn-text" onclick="refreshStatus()"><i class="fa-solid fa-rotate-right"></i> Yenile</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="status-table" id="barberStatusTable">
+                            <thead>
+                                <tr>
+                                    <th>Berber ID</th>
+                                    <th>Berber Adı</th>
+                                    <th>Sistem Durumu</th>
+                                    <th>Son Log (Zaman)</th>
+                                    <th>Aksiyonlar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JS ile Doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Quick Appointment Form (Card View for fast entry) -->
+                <section class="card bg-gradient">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-bolt"></i> Hızlı Randevu (Manuel)</h3>
+                    </div>
+                    <form id="quickAppointmentForm" class="quick-form">
+                        <div class="form-group">
+                            <label>Berber Seçimi</label>
+                            <select id="qBarberId" required>
+                                <option value="" disabled selected>Berber Seçin...</option>
+                                <!-- JS Dolduracak -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Müşteri Telefonu</label>
+                            <input type="tel" id="qPhone" placeholder="+90 555 444 33 22" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Tarih</label>
+                                <input type="date" id="qDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Saat</label>
+                                <input type="time" id="qTime" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Hizmet Tipi</label>
+                            <select id="qService" required>
+                                <option value="Berber">Berber</option>
+                                <option value="Kuaför">Kuaför</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary w-full mt-3">Randevuyu Kaydet</button>
+                    </form>
+                </section>
+                
+                <!-- Calendar Links -->
+                <section class="card col-span-3">
+                    <div class="card-header">
+                        <h3><i class="fa-brands fa-google"></i> Google Calendar Hızlı Erişim</h3>
+                    </div>
+                    <div class="calendar-grid" id="calendarLinksContainer">
+                        <!-- JS Dolduracak -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Barber Modal -->
+    <div id="barberModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-user-plus"></i> Yeni Berber Tanımla</h3>
+                <span class="close" onclick="closeBarberModal()">&times;</span>
+            </div>
+            <form id="newBarberForm">
+                <div class="form-group">
+                    <label>Berber Seçimi / Shop ID (Benzersiz)</label>
+                    <input type="text" id="nbShopId" placeholder="Örn: SH-011" required>
+                </div>
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" id="nbName" placeholder="Örn: Hüseyin Yılmaz" required>
+                </div>
+                <div class="form-group">
+                    <label>Google Calendar ID</label>
+                    <input type="text" id="nbGCalId" placeholder="Örn: huseyin@group.calendar.google.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="switch-label">
+                        <span>Sistem Aktif Mi?</span>
+                        <input type="checkbox" id="nbIsActive" checked>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeBarberModal()">İptal</button>
+                    <button type="submit" class="btn-primary">Sisteme Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

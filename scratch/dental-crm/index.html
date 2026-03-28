@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DentCRM – Klinik Yönetim Sistemi</title>
+  <meta name="description"
+    content="Diş kliniği için kapsamlı CRM ve yönetim sistemi. Hasta takibi, randevu, finans ve yapay zeka asistanı." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Mobile Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🦷</div>
+      <div class="logo-text">
+        <span class="logo-name">DentCRM</span>
+        <span class="logo-sub">Klinik Yönetimi</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">ANA MENÜ</div>
+      <a href="#" class="nav-item active" data-section="dashboard" id="nav-dashboard">
+        <span class="nav-icon">📊</span><span class="nav-label">Günlük Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-section="patients" id="nav-patients">
+        <span class="nav-icon">👤</span><span class="nav-label">Hastalar</span>
+      </a>
+      <a href="#" class="nav-item" data-section="appointments" id="nav-appointments">
+        <span class="nav-icon">📅</span><span class="nav-label">Randevular</span>
+      </a>
+      <a href="#" class="nav-item" data-section="treatments" id="nav-treatments">
+        <span class="nav-icon">💊</span><span class="nav-label">Tedavi & Finans</span>
+      </a>
+      <div class="nav-section-label">OTOMATİK SİSTEMLER</div>
+      <a href="#" class="nav-item" data-section="automation" id="nav-automation">
+        <span class="nav-icon">⚡</span><span class="nav-label">Otomasyon</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="#" class="nav-item" data-section="bi" id="nav-bi">
+        <span class="nav-icon">📈</span><span class="nav-label">İş Zekası</span>
+      </a>
+      <div class="nav-section-label">YAPAY ZEKA</div>
+      <a href="#" class="nav-item" data-section="ai-notes" id="nav-ai-notes">
+        <span class="nav-icon">✨</span><span class="nav-label">Klinik Not Asistanı</span>
+      </a>
+      <a href="#" class="nav-item" data-section="ai-triage" id="nav-ai-triage">
+        <span class="nav-icon">✨</span><span class="nav-label">AI Triyaj</span>
+      </a>
+      <a href="#" class="nav-item" data-section="chairside" id="nav-chairside">
+        <span class="nav-icon">🦷</span><span class="nav-label">Doktor Paneli</span>
+        <span class="nav-badge ai-badge">Yeni</span>
+      </a>      
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="clinic-info">
+        <div class="clinic-avatar">DK</div>
+        <div>
+          <div class="clinic-name">Dr. Kaya Kliniği</div>
+          <div class="clinic-role">Admin</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-wrapper">
+    <!-- Top Bar -->
+    <header class="topbar">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="btn-icon" id="sidebarToggleBtn" aria-label="Daralt" style="margin-left: -12px; margin-right: 12px; display: flex; font-size: 18px; color: var(--text-secondary); background: transparent; border: none; cursor: pointer;">
+        <span id="toggleIcon">◀</span>
+      </button>
+      <div class="topbar-title" id="topbarTitle">Günlük Dashboard</div>
+      <div class="topbar-actions">
+        <div class="topbar-date">
+          <span class="date-icon">📅</span>
+          <span id="topbarDate"></span>
+        </div>
+        <button class="btn-primary" id="btnNewPatient" onclick="openNewPatientModal()">
+          + Yeni Hasta
+        </button>
+        <button class="btn-outline" id="btnQuickPay" onclick="openQuickPayModal()"
+          style="border-color:var(--grey-200); color:var(--text-primary);">
+          💳 Ödeme Al
+        </button>
+        <button class="btn-outline" id="btnBookAppt" onclick="openBookAppointmentModal()"
+          style="border-color:var(--grey-200); color:var(--text-primary);">
+          📅 Randevu
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Sections -->
+    <main class="content" id="mainContent">
+      <!-- Section: Dashboard -->
+      <section class="section active" id="section-dashboard"></section>
+      <!-- Section: Patients -->
+      <section class="section" id="section-patients"></section>
+      <!-- Section: Appointments -->
+      <section class="section" id="section-appointments"></section>
+      <!-- Section: Treatments -->
+      <section class="section" id="section-treatments"></section>
+      <!-- Section: Automation -->
+      <section class="section" id="section-automation"></section>
+      <!-- Section: BI -->
+      <section class="section" id="section-bi"></section>
+      <!-- Section: AI Notes -->
+      <section class="section" id="section-ai-notes"></section>
+      <!-- Section: AI Triage -->
+      <section class="section" id="section-ai-triage"></section>
+      <!-- Section: Chairside View -->
+      <section class="section" id="section-chairside"></section>
+    </main>
+  </div>
+
+  <!-- MODALS -->
+  <!-- New Patient Modal -->
+  <div class="modal-backdrop" id="modalNewPatient">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Yeni Hasta Kaydı</h2>
+        <button class="modal-close" onclick="closeModal('modalNewPatient')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Ad Soyad *</label>
+            <input type="text" id="newPatientName" placeholder="Örn: Ahmet Yılmaz" />
+          </div>
+          <div class="form-group">
+            <label>Telefon *</label>
+            <input type="tel" id="newPatientPhone" placeholder="+90 5XX XXX XX XX" />
+          </div>
+          <div class="form-group">
+            <label>T.C. Kimlik No</label>
+            <input type="text" id="newPatientTC" placeholder="11 haneli TC No" maxlength="11" />
+          </div>
+          <div class="form-group">
+            <label>Doğum Tarihi</label>
+            <input type="date" id="newPatientDOB" />
+          </div>
+          <div class="form-group">
+            <label>E-posta</label>
+            <input type="email" id="newPatientEmail" placeholder="ornek@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Referans Kaynağı</label>
+            <select id="newPatientRef">
+              <option>Google / İnternet</option>
+              <option>Hasta Referansı</option>
+              <option>Instagram</option>
+              <option>Walk-in</option>
+              <option>Diğer</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label>Şikayet / Not</label>
+            <textarea id="newPatientNote" rows="2" placeholder="Hastanın gelme sebebi..."></textarea>
+          </div>
+        </div>
+        <!-- Hidden fields note -->
+        <p class="form-hint">ℹ️ Kan grubu, alerji ve ilaç bilgileri hasta kartı açıldıktan sonra girilir.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeModal('modalNewPatient')">İptal</button>
+        <button class="btn-primary" onclick="saveNewPatient()">Hasta Kaydet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Pay Modal -->
+  <div class="modal-backdrop" id="modalQuickPay">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>💳 Hızlı Ödeme Al</h2>
+        <button class="modal-close" onclick="closeModal('modalQuickPay')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Hasta</label>
+          <select id="qpPatient">
+            <option>Ayşe Demir – #1004</option>
+            <option>Mehmet Kaya – #1002</option>
+            <option>Fatma Çelik – #1007</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tutar (₺)</label>
+          <input type="number" id="qpAmount" placeholder="0.00" />
+        </div>
+        <div class="form-group">
+          <label>Ödeme Yöntemi</label>
+          <div class="pay-methods">
+            <label class="pay-method active"><input type="radio" name="payMethod" value="cash" checked /> 💵
+              Nakit</label>
+            <label class="pay-method"><input type="radio" name="payMethod" value="card" /> 💳 Kart</label>
+            <label class="pay-method"><input type="radio" name="payMethod" value="transfer" /> 🏦 Havale</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Not</label>
+          <input type="text" id="qpNote" placeholder="Ödeme açıklaması..." />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeModal('modalQuickPay')">İptal</button>
+        <button class="btn-primary" onclick="processPayment()">Ödemeyi Onayla</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Book Appointment Modal -->
+  <div class="modal-backdrop" id="modalBookAppointment">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>📅 Randevu Ekle</h2>
+        <button class="modal-close" onclick="closeModal('modalBookAppointment')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Hasta *</label>
+            <select id="bookPatient"></select>
+          </div>
+          <div class="form-group">
+            <label>Saat *</label>
+            <select id="bookTime">
+              <option>09:00</option>
+              <option>09:30</option>
+              <option>10:00</option>
+              <option>10:30</option>
+              <option>11:00</option>
+              <option>11:30</option>
+              <option>12:00</option>
+              <option>12:30</option>
+              <option>14:00</option>
+              <option>14:30</option>
+              <option>15:00</option>
+              <option>15:30</option>
+              <option>16:00</option>
+              <option>16:30</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Koltuk *</label>
+            <select id="bookChair">
+              <option value="1">🦷 Koltuk A – Dr. Kaya</option>
+              <option value="2">🦷 Koltuk B – Dr. Demir</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Süre (dk)</label>
+            <select id="bookDuration">
+              <option value="30">30 dk</option>
+              <option value="45">45 dk</option>
+              <option value="60" selected>60 dk</option>
+              <option value="90">90 dk</option>
+              <option value="120">120 dk</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label>Tedavi Türü *</label>
+            <input type="text" id="bookType" placeholder="Örn: İmplant Muayene, Dolgu, Kontrol..." />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeModal('modalBookAppointment')">İptal</button>
+        <button class="btn-primary" onclick="addAppointment()">📅 Randevu Oluştur</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chairside Quick Treatment Modal -->
+  <div class="modal-backdrop" id="modalQuickTreatment">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>Hızlı İşlem Girişi: Diş <span id="quickTreatmentTargetTooth"></span></h2>
+        <button class="modal-close" onclick="closeModal('modalQuickTreatment')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="form-hint" style="margin-top:0; margin-bottom: 12px;">Seçilen işlem stoktan otomatik düşülecektir.</p>
+        <div class="form-group">
+          <label>İşlem Türü (TDB Katoloğu)</label>
+          <select id="quickTreatmentType">
+            <option value="dolgu-kompozit">Kompozit Dolgu (I, II, III, V. Sınıflar)</option>
+            <option value="kanal-1">Kanal Tedavisi (Tek Kanal)</option>
+            <option value="kanal-2">Kanal Tedavisi (İki Kanal)</option>
+            <option value="kanal-3">Kanal Tedavisi (Üç Kanal)</option>
+            <option value="implant">İmplant (Cerrahi Safha)</option>
+            <option value="porselen-kron">Porselen Kron</option>
+            <option value="zirkonyum-kron">Zirkonyum Kron</option>
+            <option value="genel-muayene">Genel Muayene</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-top: 12px;">
+          <label>Tutar (₺)</label>
+          <input type="number" id="quickTreatmentCost" value="1500" />
+        </div>
+        <div class="form-group full-width" style="margin-top: 12px;">
+          <label>Doktor Notu</label>
+          <textarea id="quickTreatmentNote" rows="2" placeholder="Hasta hissizlik oranını %80 belirtti..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeModal('modalQuickTreatment')">İptal</button>
+        <button class="btn-primary" onclick="saveQuickTreatment()">➕ İşlemi Ekle & Planla</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Media Gallery Modal -->
+  <div class="modal-backdrop" id="modalMediaGallery">
+    <div class="modal" style="max-width: 900px;">
+      <div class="modal-header">
+        <h2>Radyoloji ve Medya Görüntüleyici</h2>
+        <button class="modal-close" onclick="closeModal('modalMediaGallery')">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 0;">
+        <div style="width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; background: #000;">
+          <img id="mediaGalleryImage" src="" alt="Radyoloji Görüntüsü" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Print overlay for treatment PDF -->
+  <div id="printArea" class="print-only"></div>
+
+  <script src="modules/data.js"></script>
+  <script src="modules/dashboard.js"></script>
+  <script src="modules/patients.js"></script>
+  <script src="modules/appointments.js"></script>
+  <script src="modules/treatments.js"></script>
+  <script src="modules/automation.js"></script>
+  <script src="modules/bi.js"></script>
+  <script src="modules/ai-notes.js"></script>
+  <script src="modules/ai-triage.js"></script>
+  <script src="modules/chairside.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+[
+    {
+        "type": "webhook",
+        "name": "check_availability",
+        "description": "Checks the specified barber's calendar for availability at a specific date and time.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "barber_name": {
+                    "type": "string",
+                    "description": "The name of the barber they want to book with. E.g., 'Ahmet' or 'Any'."
+                },
+                "date": {
+                    "type": "string",
+                    "description": "The date they want to book in YYYY-MM-DD format."
+                },
+                "time": {
+                    "type": "string",
+                    "description": "The time they want to book in HH:MM AM/PM format (e.g., '3:00 PM')."
+                }
+            },
+            "required": [
+                "date",
+                "time"
+            ]
+        },
+        "webhookUrl": "http://localhost:5001/webhook/check_availability"
+    },
+    {
+        "type": "webhook",
+        "name": "confirm_booking",
+        "description": "Confirms the booking and locks in the appointment in the calendar. Must only be called after user explicitly agrees to the time.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "customer_name": {
+                    "type": "string",
+                    "description": "The first and last name of the customer."
+                },
+                "customer_phone": {
+                    "type": "string",
+                    "description": "The phone number of the customer in E.164 format, suitable for WhatsApp."
+                },
+                "barber_name": {
+                    "type": "string",
+                    "description": "The confirmed barber name."
+                },
+                "start_time": {
+                    "type": "string",
+                    "description": "The confirmed date and time in ISO-8601 format."
+                }
+            },
+            "required": [
+                "customer_name",
+                "customer_phone",
+                "start_time"
+            ]
+        },
+        "webhookUrl": "http://localhost:5001/webhook/confirm_booking"
+    }
+]

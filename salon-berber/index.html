@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orqova - Salons & Barbers</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">Orqova.</a>
+
+            <nav class="nav">
+                <a href="../index.html" class="nav-link" data-en="Back to Home" data-tr="Ana Sayfaya Dön">Back to
+                    Home</a>
+                <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language"
+                    style="margin-right: 8px;">TR</button>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                    <svg class="dark-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="light-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main style="padding-top: 140px; padding-bottom: 80px;">
+        <div class="container">
+
+            <a href="../index.html"
+                style="color: var(--clr-text-muted); text-decoration: none; margin-bottom: 24px; display: inline-block; font-size: 0.9rem;"
+                data-en="← Back to Solutions" data-tr="← Çözümlere Dön">← Back to Solutions</a>
+
+            <div style="max-width: 800px;">
+                <p class="framework-subtitle" style="margin-bottom: 8px;" data-en="The Chair Occupancy Framework"
+                    data-tr="Koltuk Doluluk Çerçevesi">The Chair Occupancy Framework</p>
+                <h1 class="hero-title" style="text-align: left; margin-left: 0; font-size: clamp(2.5rem, 4vw, 3.5rem);"
+                    data-en="Chair Occupancy & Churn Prevention" data-tr="Koltuk Doluluk ve Kayıp Önleme Çerçevesi">
+                    Chair Occupancy & Churn Prevention</h1>
+                <p class="card-text" style="font-size: 1.1rem; margin-bottom: 48px;"
+                    data-en="Barbers operate on high-frequency, low-margin transactions. Orqova focuses entirely on Leakage Prevention, ensuring your chairs stay occupied and product stock is precisely managed."
+                    data-tr="Berberler yüksek işlem hacmi ve düşük kar marjı ile çalışır. Orqova tamamen kayıp (kaçak) önlemeye odaklanarak koltuklarınızın dolu kalmasını ve ürün stoklarınızın hassas bir şekilde yönetilmesini sağlar.">
+                    Barbers operate on high-frequency, low-margin transactions. Orqova focuses entirely on Leakage
+                    Prevention, ensuring your chairs stay occupied and product stock is precisely managed.</p>
+
+                <h3 class="card-title" data-en="Core Mechanics" data-tr="Temel Dinamikler">Core Mechanics</h3>
+
+                <ul style="list-style: none; margin-top: 24px;">
+                    <li style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg></div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;" data-en="1. No-Show Automation"
+                                data-tr="1. İptal / Gelmeme (No-Show) Otomasyonu">1. No-Show Automation</h4>
+                            <p class="card-text"
+                                data-en="Implement a double-tap SMS confirmation system. If a client doesn't confirm 2 hours prior, the slot is automatically opened to a 'waitlist' via automated blast."
+                                data-tr="Randevu iki saat önceden SMS ile çift onay almazsa, boşalan saat otomatik olarak bekleme listesindeki (waitlist) müşterilere bildirilir.">
+                                Implement a double-tap SMS confirmation system. If a client doesn't confirm 2 hours
+                                prior, the slot is automatically opened to a 'waitlist' via automated blast.</p>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5.5"></path>
+                                <polyline points="8.5 12 5.5 15 8.5 18"></polyline>
+                                <line x1="20" y1="4" x2="20" y2="4"></line>
+                                <line x1="20" y1="8" x2="20" y2="8"></line>
+                            </svg></div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;" data-en="2. Churn Recovery"
+                                data-tr="2. Kayıp Müşteri Geri Kazanımı">2. Churn Recovery</h4>
+                            <p class="card-text"
+                                data-en="Automated triggers for clients who haven't booked in 4+ weeks, offering a 'Welcome Back' discount or loyalty incentive."
+                                data-tr="4 haftadan uzun süredir randevu almayan müşteriler için otomatik olarak tetiklenen 'Tekrar Hoş Geldiniz' indirimleri ve sadakat ödülleri.">
+                                Automated triggers for clients who haven't booked in 4+ weeks, offering a 'Welcome Back'
+                                discount or loyalty incentive.</p>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg></div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;"
+                                data-en="3. Predictive Inventory Automation" data-tr="3. Öngörücü Stok Otomasyonu">3.
+                                Predictive Inventory Automation</h4>
+                            <p class="card-text"
+                                data-en="A simple tracking system that alerts the owner when product stock (gels, blades, aftershave) hits a critical threshold."
+                                data-tr="Kritik ürünlerin (jöleler, jiletler, bakım losyonları) stok seviyesi sınırın altına indiğinde dükkan sahibini otomatik olarak uyarır.">
+                                A simple tracking system that alerts the owner when product stock (gels, blades,
+                                aftershave) hits a critical threshold.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Data Visualization: Line Graph -->
+                <div class="datavis-container" style="max-width: 600px;">
+                    <div class="datavis-header">
+                        <h4 class="datavis-title" data-en="Revenue Recovery Trend" data-tr="Gelir Geri Kazanım Trendi">
+                            Revenue Recovery Trend</h4>
+                        <p class="datavis-subtitle"
+                            data-en="Projected baseline revenue vs. active churn recovery campaigns."
+                            data-tr="Öngörülen temel gelire karşı aktif kayıp kurtarma kampanyaları.">Projected baseline
+                            revenue vs. active churn recovery campaigns.</p>
+                    </div>
+
+                    <div class="linegraph">
+                        <div class="linegraph-path"></div>
+                        <svg class="linegraph-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <!-- A clean rising curve from bottom left to top right -->
+                            <path d="M 0 100 Q 40 100, 60 40 T 100 5"></path>
+                        </svg>
+
+                        <!-- Terminal Goal Dot -->
+                        <div class="linegraph-dot">
+                            <span class="linegraph-tooltip" data-en="Goal" data-tr="Hedef">Goal</span>
+                        </div>
+
+                        <!-- Axis Labels -->
+                        <span
+                            style="position: absolute; bottom: -24px; left: 0; font-size: 0.75rem; color: var(--clr-text-muted);"
+                            data-en="Launch" data-tr="Başlangıç">Launch</span>
+                        <span
+                            style="position: absolute; bottom: -24px; right: 0; font-size: 0.75rem; color: var(--clr-text-muted);"
+                            data-en="6 Months" data-tr="6 Ay">6 Months</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo footer-logo">Orqova</a>
+                <p class="footer-text" data-en="Engineering autonomous systems."
+                    data-tr="Otonom sistemler tasarlıyoruz.">Engineering autonomous systems.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#" data-en="Privacy Policy" data-tr="Gizlilik Politikası">Privacy Policy</a>
+                <a href="#" data-en="Terms of Use" data-tr="Kullanım Şartları">Terms of Use</a>
+            </div>
+            <div class="footer-copyright" data-en="&copy; 2026 Orqova. All rights reserved."
+                data-tr="&copy; 2026 Orqova. Tüm hakları saklıdır.">
+                &copy; 2026 Orqova. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

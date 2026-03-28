@@ -1,0 +1,583 @@
+/* ===============================
+   TOKENS & VARIABLES (Dual Mode)
+   =============================== */
+:root {
+    /* Base Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', 'Space Grotesk', sans-serif;
+
+    /* Core Accent */
+    --clr-orange: #F97316;
+    --clr-orange-hover: #EA580C;
+
+    /* Shadows & Transitions */
+    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.05);
+    /* Soft, large-radius shadow */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Apple-esque White Mode (Default) */
+.theme-light {
+    --clr-bg: #FFFFFF;
+    --clr-surface: #F9FAFB;
+    --clr-text-main: #1A0B2E;
+    /* Midnight Purple */
+    --clr-text-muted: #6B7280;
+    --clr-border: #E5E7EB;
+    --clr-nav-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Dark Authority Mode */
+.theme-dark {
+    --clr-bg: #1A0B2E;
+    /* Midnight Purple */
+    --clr-surface: #24133A;
+    --clr-text-main: #FFFFFF;
+    --clr-text-muted: #9CA3AF;
+    --clr-border: #3D2B56;
+    --clr-nav-bg: rgba(26, 11, 46, 0.85);
+    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* ===============================
+   RESET & BASE 
+   =============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--clr-bg);
+    color: var(--clr-text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===============================
+   TYPOGRAPHY 
+   =============================== */
+h1,
+h2,
+h3,
+h4,
+.logo {
+    color: var(--clr-text-main);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+/* ===============================
+   BUTTONS
+   =============================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 8px;
+    /* Industrial precision */
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-body);
+}
+
+.btn-primary {
+    background-color: var(--clr-orange);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-orange-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--clr-text-main);
+    border: 1px solid var(--clr-border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--clr-text-muted);
+}
+
+/* ===============================
+   HEADER 
+   =============================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 0;
+    background: var(--clr-nav-bg);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    border-bottom: 1px solid var(--clr-border);
+    transition: padding var(--transition-smooth), background-color var(--transition-smooth);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--clr-text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--clr-text-main);
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--clr-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast);
+}
+
+.theme-btn:hover {
+    background-color: var(--clr-surface);
+}
+
+.theme-dark .dark-icon {
+    display: none;
+}
+
+.theme-light .light-icon {
+    display: none;
+}
+
+/* ===============================
+   HERO SECTION
+   =============================== */
+.hero {
+    padding-top: 180px;
+    padding-bottom: 120px;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-body);
+    /* Precision focus instead of Serif for titles here based on brief */
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--clr-text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* ===============================
+   SERVICES SECTION
+   =============================== */
+.services {
+    padding: 100px 0;
+    background-color: var(--clr-surface);
+    border-top: 1px solid var(--clr-border);
+    transition: background-color var(--transition-smooth);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+}
+
+.section-desc {
+    text-align: center;
+    color: var(--clr-text-muted);
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: var(--clr-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: 12px;
+    padding: 40px;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), background-color var(--transition-smooth);
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.card-icon {
+    color: var(--clr-orange);
+    /* Orange Pop */
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    background: rgba(249, 115, 22, 0.1);
+    /* Very subtle orange bg */
+    color: var(--clr-orange);
+    border-radius: 4px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.framework-subtitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+}
+
+.card-text {
+    color: var(--clr-text-muted);
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+}
+
+/* Workflow Step-by-Step Bar */
+.workflow-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--clr-border);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+}
+
+.workflow-bar .step {
+    padding: 4px 0;
+}
+
+.workflow-bar .active-step {
+    color: var(--clr-orange);
+    font-weight: 600;
+}
+
+.workflow-bar .step-arrow {
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+.footer {
+    background-color: var(--clr-bg);
+    border-top: 1px solid var(--clr-border);
+    padding: 60px 0 30px;
+    transition: background-color var(--transition-smooth);
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-logo {
+    margin-bottom: 12px;
+    display: block;
+}
+
+.footer-text {
+    color: var(--clr-text-muted);
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-links a {
+    color: var(--clr-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--clr-text-main);
+}
+
+.footer-copyright {
+    text-align: center;
+    color: var(--clr-text-muted);
+    font-size: 0.85rem;
+}
+
+/* ===============================
+   DATA VISUALIZATIONS
+   =============================== */
+.datavis-container {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 40px 0;
+    box-shadow: var(--shadow-soft);
+}
+
+.datavis-header {
+    margin-bottom: 32px;
+}
+
+.datavis-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.datavis-subtitle {
+    color: var(--clr-text-muted);
+    font-size: 0.9rem;
+}
+
+/* --- Bar Chart (Dental) --- */
+.barchart {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    height: 300px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid var(--clr-border);
+    position: relative;
+}
+
+.barchart-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.barchart-bar {
+    width: 60%;
+    background-color: var(--clr-border);
+    /* Neutral Grey/Purple */
+    border-radius: 6px 6px 0 0;
+    transition: height 1s cubic-bezier(0.16, 1, 0.3, 1), background-color var(--transition-smooth);
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.barchart-col.highlight .barchart-bar {
+    background-color: var(--clr-orange);
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+
+.barchart-val {
+    position: absolute;
+    top: -30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--clr-text-main);
+}
+
+.barchart-col.highlight .barchart-val {
+    color: var(--clr-orange);
+}
+
+.barchart-label {
+    position: absolute;
+    bottom: -30px;
+    font-size: 0.8rem;
+    color: var(--clr-text-muted);
+    text-align: center;
+    width: 100%;
+}
+
+/* --- Line Graph (Salon) --- */
+.linegraph {
+    height: 300px;
+    border-bottom: 2px solid var(--clr-border);
+    border-left: 2px solid var(--clr-border);
+    position: relative;
+    margin-left: 16px;
+}
+
+.linegraph-path {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Create a CSS rising curve mimicking revenue recovery */
+    background: radial-gradient(circle at bottom right, transparent 50%, var(--clr-text-muted) 51%, transparent 52%);
+    background-size: 150% 150%;
+    background-position: 100% 100%;
+    opacity: 0.3;
+}
+
+/* More controlled SVG approach for line graph */
+.linegraph-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.linegraph-svg path {
+    stroke: var(--clr-text-muted);
+    stroke-width: 3;
+    fill: none;
+    vector-effect: non-scaling-stroke;
+}
+
+.linegraph-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--clr-orange);
+    border: 3px solid var(--clr-bg);
+    border-radius: 50%;
+    top: 5%;
+    /* Reached goal height */
+    right: -8px;
+    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.2);
+}
+
+.linegraph-tooltip {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: var(--clr-text-main);
+    color: var(--clr-bg);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN (MOBILE)
+   =============================== */
+@media (max-width: 768px) {
+    .nav {
+        gap: 16px;
+    }
+
+    .nav-link {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 140px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
+    .barchart-bar {
+        width: 80%;
+    }
+
+    .barchart-label {
+        font-size: 0.7rem;
+    }
+}

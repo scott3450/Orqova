@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orqova - Dual-Mode Automation Interface</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Orqova.</a>
+
+            <nav class="nav">
+                <a href="#services" class="nav-link" data-en="Solutions" data-tr="Çözümler">Solutions</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-tr="İletişim">Contact</a>
+                <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language"
+                    style="margin-right: 8px;">TR</button>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                    <svg class="dark-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="light-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <h1 class="hero-title" data-en="Automate Excellence.<br>Scale Precision."
+                data-tr="Mükemmelliği Otomatize Edin.<br>Hassasiyeti Ölçekleyin.">Automate Excellence.<br>Scale
+                Precision.</h1>
+            <p class="hero-subtitle"
+                data-en="Orqova engineers intelligent autonomous systems and reservation infrastructures for high-performance businesses."
+                data-tr="Orqova, yüksek performanslı işletmeler için akıllı otonom sistemler ve rezervasyon altyapıları tasarlar.">
+                Orqova engineers intelligent autonomous systems and reservation infrastructures for high-performance
+                businesses.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary" data-en="Explore Solutions"
+                    data-tr="Çözümleri İncele">Explore Solutions</a>
+                <a href="#contact" class="btn btn-secondary" data-en="Contact Strategy"
+                    data-tr="Strateji İletişimi">Contact Strategy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title" data-en="Industry-Specific Solutions" data-tr="Sektöre Özel Çözümler">
+                Industry-Specific Solutions</h2>
+            <p class="section-desc"
+                data-en="We build frameworks designed to prevent revenue leakage and automate the entire client lifecycle."
+                data-tr="Gelir kaybını önlemek ve tüm müşteri yaşam döngüsünü otomatikleştirmek için tasarlanmış çerçeveler oluşturuyoruz.">
+                We build frameworks designed to prevent revenue leakage and automate the entire client lifecycle.</p>
+
+            <div class="services-grid">
+
+                <!-- Card B: Barbers & Salons -->
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <!-- Thin Precision Scissors -->
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="6" cy="6" r="3"></circle>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                                <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                                <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <span class="metric-label" data-en="Target: 5+ Admin Hrs Recovered"
+                            data-tr="Hedef: 5+ Saat Kazanç">Target: 5+ Admin Hrs Recovered</span>
+                    </div>
+                    <h3 class="card-title" data-en="Barbers & Salons" data-tr="Berberler & Salonlar">Barbers & Salons
+                    </h3>
+                    <p class="framework-subtitle" data-en="The Chair Occupancy Framework"
+                        data-tr="Koltuk Doluluk Çerçevesi">The Chair Occupancy Framework</p>
+                    <p class="card-text"
+                        data-en="24/7 autonomous booking, double-tap SMS confirmations, and automated 'churn recovery' for lapsed clients. Prevent leakage and maximize margin."
+                        data-tr="7/24 otonom rezervasyon, çift onaylı SMS sistemi ve kayıp müşteriler için otomatik geri kazanım tetikleyicileri. Kaybı önleyin, marjı büyütün.">
+                        24/7 autonomous booking, double-tap SMS confirmations, and automated 'churn recovery' for lapsed
+                        clients. Prevent leakage and maximize margin.</p>
+
+                    <div class="workflow-bar">
+                        <div class="step" data-en="Book" data-tr="Randevu">Book</div>
+                        <div class="step-arrow">➔</div>
+                        <div class="step" data-en="Remind" data-tr="Hatırlat">Remind</div>
+                        <div class="step-arrow">➔</div>
+                        <div class="step active-step" data-en="Retain" data-tr="Koru">Retain</div>
+                    </div>
+
+                    <a href="salon-berber/index.html" class="btn btn-outline" style="margin-top: 24px; width: 100%;"
+                        data-en="Learn More" data-tr="Daha Fazla Bilgi">Learn More</a>
+                </div>
+
+                <!-- Card A: Dental Clinics -->
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <!-- Thin Medical Cross -->
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v20"></path>
+                                <path d="M2 12h20"></path>
+                            </svg>
+                        </div>
+                        <span class="metric-label" data-en="Target: 15% No-Show Reduction"
+                            data-tr="Hedef: %15 İptal Düşüşü">Target: 15% No-Show Reduction</span>
+                    </div>
+                    <h3 class="card-title" data-en="Dental Clinics" data-tr="Diş Klinikleri">Dental Clinics</h3>
+                    <p class="framework-subtitle" data-en="The Patient Lifecycle Framework"
+                        data-tr="Hasta Yaşam Döngüsü Çerçevesi">The Patient Lifecycle Framework</p>
+                    <p class="card-text"
+                        data-en="AI-driven lead qualification, automated post-op care sequences, and private reputation management systems. Built for high-trust professional handling."
+                        data-tr="Yapay zeka analizli hasta kalifikasyonu, otomatik ameliyat sonrası bakım süreçleri ve gizli itibar yönetimi. Yüksek güven gerektiren operasyonlar için üretildi.">
+                        AI-driven lead qualification, automated post-op care sequences, and private reputation
+                        management systems. Built for high-trust professional handling.</p>
+
+                    <div class="workflow-bar">
+                        <div class="step" data-en="Capture" data-tr="Yakala">Capture</div>
+                        <div class="step-arrow">➔</div>
+                        <div class="step" data-en="Qualify" data-tr="Filtrele">Qualify</div>
+                        <div class="step-arrow">➔</div>
+                        <div class="step active-step" data-en="Confirm" data-tr="Onayla">Confirm</div>
+                    </div>
+
+                    <a href="dental-clinic/index.html" class="btn btn-outline" style="margin-top: 24px; width: 100%;"
+                        data-en="Learn More" data-tr="Daha Fazla Bilgi">Learn More</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo">Orqova</a>
+                <p class="footer-text" data-en="Engineering autonomous systems."
+                    data-tr="Otonom sistemler tasarlıyoruz.">Engineering autonomous systems.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#" data-en="Privacy Policy" data-tr="Gizlilik Politikası">Privacy Policy</a>
+                <a href="#" data-en="Terms of Use" data-tr="Kullanım Şartları">Terms of Use</a>
+            </div>
+            <div class="footer-copyright" data-en="&copy; 2026 Orqova. All rights reserved."
+                data-tr="&copy; 2026 Orqova. Tüm hakları saklıdır.">
+                &copy; 2026 Orqova. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
